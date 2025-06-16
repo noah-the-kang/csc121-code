@@ -1,0 +1,73 @@
+1. What value is the constant in this program? What [data] type of value
+is it? What does it stand for? What did you name it? (Note: All of these
+questions imply there IS a constant ...and only ONE constant!!!)
+
+    A constant named OUNCES_IN_POUND is defined as a constant double with 
+    the value of 16. It represents the number of ounces in 1 pound.
+
+2. What variables do you have in this program? What are their data types?
+
+    The double variable ounces represents the number of ounces the user
+    inputs. The double variable pounds represents the whole number
+    floored quantity of pounds in ounces. The double ounces_remainder
+    represents the remainder of ounces after the whole number of
+    pounds was taken. The pounds_total double variable represents
+    the quantity of pounds equivalent to ounces but in decimal form.
+
+3. How can you get both the decimal total pounds and the whole pounds
+with remaining ounces from the same input value?
+
+    You can create new variables that operate on a single input value
+    without altering the value of the input value. You simply divide
+    ounces by 16 to find the decimal total pounds while you floor the
+    quotient of ounces and 16 and factor in the remainder to find the
+    whole pounds with remaining ounces.
+
+4. What happens if the user types a fractional number of ounces to
+begin with? (I.E. 4.2?) (Do not try to correct this behavior — just
+document it.)
+
+    The decimal is factored into the remaining ounces value.
+
+5. What happens if the user accidentally types a symbol or letter
+instead of their ounces amount? (Again, do not try to correct this
+behavior — just document it.)
+
+    The program ignores it since it is not a numerical value and
+    sets/keeps ounces equal to 0.
+
+
+User-Entered Digits TPQs
+1. If the user's input is potentially followed by garbage (well,
+textual information we don't want or need, anyway), how can we
+throw it away? More specifically, how do we tell cin that we don't
+want or need the buffer contents...that it can simply be ignored?
+
+    We can include a cin.ignore statement right after the usual
+    cin >> ounces statement to ignore all text following the
+    initial numerical value entered.
+
+2. Does this facility require anything other than our usual #include
+of iostream at the top of our program?
+(What else do we need? Where do we get it? What does it normally
+represent? What does it represent here in cin's philosophy of the world?)
+
+    <limits> should be included to use
+    std::numeric_limits<std::streamsize>::max(), which represents
+    the largest possible value. This means we can ignore all of
+    the characters following the number entered no matter the number
+    of characters entered.
+
+3. Why don't we need/use the string data type in this situation?
+(Doesn't string allow us to store multiple characters in a single
+variable — like units?) (Which of the above example situations would
+the string data type not handle well? What would happen in those
+situations were we to use string — as opposed to what we said we'd
+want to happen in the examples?)
+
+    Using a string would require us to convert the string back to a
+    double in order to perform math operations on it to calculate
+    the resulting pounds and remaining ounces. User entered digits
+    could make the conversion process more tricky while using a
+    string to store the user entered ounces wouldn't solve the
+    problem of spelling out the number of ounces.
