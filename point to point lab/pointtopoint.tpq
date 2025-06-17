@@ -1,0 +1,42 @@
+1. How many variables are needed here? (Hint: There are two points being input and a third point being output. How many values are needed to 'make' a 2D point?)
+
+    Four variables are designated as the two components of each of the two points. Two for the two x coords and two for the two y coords.
+
+2. Would it make any sense to have whole-valued point coordinates (as opposed to decimal-valued point coordinates...)? That is, would it ever be correct for you to assume that a point's coordinates would never have fractional parts?
+
+    It wouldn't make much sense to always round to a whole number since the midpoint formula, by nature, doesn't exclude non-whole number results.
+
+3. What is the formula to calculate a midpoint? Compare/Contrast the x part of the formula and the y part. (I.E. How are they similar? How are they different?)
+
+    ((x1+2)/2, (y1+y2)/2). Both average the two points (ie the resulting x coordinate is the average of the two x coordinates and the resulting y coordinate is the average of the two y coordinates).
+
+4. What happens if the input points are in different quadrants? In the same quadrant? On an axis? At the origin? (I.E. Can your program ever go wrong because of the points' locations?)
+
+    It doesn't matter if the input points are in different quadrants since the formula takes into account negative and positive signs of points.
+
+5. How many different ways can you pick a pair of points from the Cartesian plane: quadrant(s), axis/axes, origin? (In other words, how many tests would it take to completely test your program?) (You do not have to script that many tests. But you should be able to calculate how many there should be. That way when you are working in industry, you can more thoroughly test your applications and run Micro-sloth out of business. *chuckle* *grin*)
+
+    10 for each of the quadrants, 16 for each of the axes, and 4 for the origin results in 30 total tests.
+
+
+Toward a More Natural Manner of Input TPQs
+
+1. To make the input style more natural, you'll need to make the user type in the parentheses and the comma for typical Cartesian point notation. What [data] type of variable(s) will this require?
+
+    Either a string or char can be used to store the parantheses and comma.
+
+2. How many variables will you need to make the input style more naturalfor the user? At minimum? At most?
+
+    A minimum of three variables and a max of six is needed.
+
+3. How can the parentheses and comma be placed right next to the numbers like that? How can cin determine where the number stops and the other stuff begins? Remember what happened when you typed a symbol or letter at a numeric prompt before? It was chaos! Why don't we see those problems here?
+
+    Characters are read into the chars while numerical values are read into the double vars.
+
+4. What happens if the user doesn't type the parentheses or the comma? What happens if they type some other symbols instead? Letters instead? Digits instead? (Try input like: $4^5%and see what happens. Try 44 12x— what happens? Experiment...) (Do not try to correct this behavior — just document it.)
+
+    Since if-else statements are used in the program, it invalidates the response.
+
+5. What if everything they type is non-numeric (i.e. '&*$#^')? Remember what happened when you typed a symbol or letter at a numeric prompt before? (Again, do not try to correct this behavior — just document it.)
+
+    The program still outputs that the response is invalid.
