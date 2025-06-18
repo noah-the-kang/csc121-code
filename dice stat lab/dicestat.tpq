@@ -1,0 +1,15 @@
+1. If you fail to call the srand function, every run of your program with the same kind of dice roll results in the same typical roll value. Why is this?
+
+    The random number generator isn't seeded each and every time, so it generates the same/sequence of numbers.
+
+2. Why do we nest the call to the time function inside the call to the srand function? What is that funny argument to the time function (not its meaning, but just what is it)?
+
+    We nest the call time(NULL) to the srand function to seed the random number generator a seemingly random number.
+
+3. Explain how the formula derived in the notes works to generate numbers in a specified range.
+
+    rand() % (max - min + 1) makes sure that the max value will be max-min+1-1, or max-min, and then adding min would result in a maximum of max. If rand() results in 0, then + min would result in a minimum of min.
+
+4. Bonus:Can you verify the simple formula I gave for the average value of a dice roll? (Hint: Use a small die like a 4-sider and try rolling different numbers of them. What possible values are there for each die? What possible sums can result? How many ways can each sum occur? What is this as a fraction of the total number of possible die combinations?)
+
+    For a 4-sided die, there are four possible values (1-4). The average is a the sum of all possible values, being 1+2+3+4 = 10 divided by the number of sides. 10/4 = 2.5. Using the formula, we also get (4+1)/2 = 5/2 = 2.5.
