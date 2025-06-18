@@ -6,7 +6,7 @@ int main() {
     int sides, rolls;
     char ch1;
     std::cout << "\t\tWelcome to the Dice Statistics Program!"
-     << std::endl;
+    << std::endl;
     std::cout << "Enter your dice roll: ";
     std::cin >> rolls >> ch1 >> sides;
     std::cout << "Rolls: " << rolls << ", Sides: " << sides << std::endl;

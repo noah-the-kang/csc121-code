@@ -12,9 +12,11 @@ int main() {
 
     if (ch1 == '(' && ch2 == ',' && ch3 == ')') {
         // Input the coordinates of the second point
-        std::cout << "Enter the coordinates of the second point (x2 y2): ";
+        std::cout << "Enter the coordinates of the " 
+        << "second point (x2 y2): ";
         std::cin >> ch1 >> x2 >> ch2 >> y2 >> ch3;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), 
+        '\n');
 
         if (ch1 == '(' && ch2 == ',' && ch3 == ')') {
             // Calculate the midpoint

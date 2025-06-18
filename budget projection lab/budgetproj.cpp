@@ -12,6 +12,7 @@ int main() {
     std::cin >> ch1 >> spending;
 
     std::cout << "\n\n";
+    
     double percentage = floor(spending/allotment * 100);
     if (percentage > 100){
         std::cout << "This overspending will bankrupt the company!"
