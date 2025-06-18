@@ -4,39 +4,31 @@
 
 int main() {
     int sides, rolls;
+    char ch1;
     std::cout << "\t\tWelcome to the Dice Statistics Program!"
      << std::endl;
-    std::cout << "Enter the number of sides on the die: ";
-    std::cin >> sides;
-    std::cout << "Enter the number of rolls to simulate: ";
-    std::cin >> rolls;
-    std::cout << "When rolling a " << sides << "-sided die "
-     << rolls << " times, the results are:" << std::endl;
+    std::cout << "Enter your dice roll: ";
+    std::cin >> rolls >> ch1 >> sides;
+    std::cout << "Rolls: " << rolls << ", Sides: " << sides << std::endl;
+    std::cout << "When rolling " << rolls << ch1 << sides
+     << " (" << rolls << " " << sides << "-sided dice), the results are:"
+    << std::endl;
 
     int* rollArr = new int[rolls];
     for (int i = 0; i < rolls; ++i) {
-        int roll = (std::rand() % sides) + 1; // Generate a random roll
         srand(time(NULL));
+        int roll = (std::rand() % sides) + 1; // Generate a random roll
         rollArr[i] = roll;
     }
 
     // min, max, and average calculations
-    int min = rollArr[0];
-    int max = rollArr[0];
-    double sum = 0.0;
-    for (int i = 0; i < rolls; ++i) {
-        if (rollArr[i] < min) {
-            min = rollArr[i];
-        }
-        if (rollArr[i] > max) {
-            max = rollArr[i];
-        }
-        sum += rollArr[i];
-    }
+    int min = rolls;
+    int max = rolls*sides;
+    double avg = (max+min) / 2.0;
 
     std::cout << "\tMinimum roll: " << min << std::endl;
     std::cout << "\tMaximum roll: " << max << std::endl;
-    std::cout << "\tAverage roll: " << (sum / rolls) << std:: endl;
+    std::cout << "\tAverage roll: " << avg << std:: endl;
 
     return 0;
 }
