@@ -14,13 +14,6 @@ int main() {
      << " (" << rolls << " " << sides << "-sided dice), the results are:"
     << std::endl;
 
-    int* rollArr = new int[rolls];
-    for (int i = 0; i < rolls; ++i) {
-        srand(time(NULL));
-        int roll = (std::rand() % sides) + 1; // Generate a random roll
-        rollArr[i] = roll;
-    }
-
     // min, max, and average calculations
     int min = rolls;
     int max = rolls*sides;
@@ -29,6 +22,12 @@ int main() {
     std::cout << "\tMinimum roll: " << min << std::endl;
     std::cout << "\tMaximum roll: " << max << std::endl;
     std::cout << "\tAverage roll: " << avg << std:: endl;
+
+    srand(time(NULL));
+    int roll = (std::rand() % sides) + 1; // Generate a random roll
+
+    std::cout << "A typical roll of " << rolls << ch1 << sides
+     << " might end up with a value of "<< roll;
 
     return 0;
 }
