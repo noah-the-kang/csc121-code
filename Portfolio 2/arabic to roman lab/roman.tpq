@@ -1,0 +1,83 @@
+1. Is there a simple repeating pattern here that might help you extract
+    commonality and save coding time?
+
+    The Roman numeral system has a character for the values of 1, 5, 10,
+    50, 100, and 1000. Placing a character of lower numerical values
+    to the right of another character subtracts its value from the
+    larger char.
+
+2. How does modulo fit into this scheme? (Hint: Look, for instance, at 2
+    and 7... or 1 and 6... or 3 and 8...)
+
+    My program did not use modulo in the conversion process, but I would
+    imagine that a program could use it to convert the number digit
+    by digit.
+
+3. Why will your program only work for values in the (integral) range
+    [1..3999]? (Hint: What's the Roman numeral representation of 5000?
+    How did Romans represent zero?)
+
+    You'd have to write MMMM to describe 4000 in the Roman numeral system,
+    which violates the three symbol rule, in which a char cannot be
+    written more than three consecutive times. This rule is the reason why
+    4 is described as IV instead of IIII.
+
+4. For the conversion of each digit to Roman form (except maybe the
+    thousands digit), you should have four branches. How many are cascaded
+    from one another? How many of these branches are nested aside
+    from cascading? (For you worriers: it can certainly be done with 
+    more branches, but it can be done with just four branches.)
+
+    If the program converts a number digit by digit, then the four
+    branches would cascade from each other. The first branch would be
+    checking if the digit was greater than or equal to 9, then 5, then
+    4, and finally 1.
+
+5. What is the purpose of each of the threeloops in your program? (Okay,
+    so you actually should have six loops, but four of them are pretty
+    much doing the same thing, now aren't they?)
+
+    My program has three loops: a loop in convertNum to subtract a largest
+    number from the inputted number to condense it into Roman numeral
+    form, an error checker in the main program that checks if the user
+    entered in a number less than 1 or greater than 3999, and a do-while
+    loop to allow the user to keep inputting numbers to convert to Roman
+    numerals.
+
+6. How many tests would be required to completelytest this program?
+    (Shockingly, it is farless than 3999!)
+
+    You should only need to test each digit pattern once (0-9) since the
+    conversion logic is identical for each place value.
+
+7. Why does Jason want us to convert numbers from a dead civilization,
+    anyway? (I.E. What are Roman numerals typically used for in our
+    society?)
+
+    Roman numerals are still used in traditional clocks, book chapters
+    (old themed books), and most notably sports like the Superbowl.
+
+8. How can your program allow the user to type both yand yesfor their
+    again response? (Hint: This does NOT involve strings!!!)
+
+    The program only needs to read the first character of the answer,
+    since "yes" and "no" each start with a different char. Thus, the
+    program can read the strings through their first char instead of
+    involving whole strings.
+
+9. How can your program allow the user to type both yand Y for their
+    again response? (Hint: There are two ways, but one is far easier.
+    You know, since it's mostly done for you in that library fun... Whoa!
+    I almost let that one slip, eh? *chuckle*)
+
+    I used tolower from <cctype> so the statement only sets it equal to
+    'y' instead of having to check for both 'y' and 'Y'.
+
+10. How can you have your program print different response text before
+    (and after?) the Roman numeral result? (Hint: Think of it as a
+    randomly chosen message...or a pair of randomly selected leaders
+    and trailers...)
+
+    You can create a list of messages and then generate a random number
+    within the range of the size of this list. You can then output the
+    message of the index of the list of that randomly generated number.
