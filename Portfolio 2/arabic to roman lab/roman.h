@@ -10,7 +10,6 @@ string arabicToRoman(int number);
 
 // User input and validation
 bool getValidNumber(int& whole, int& fracNum, int& fracDen);
-string trim(const string& s);
 
 // Roman fraction symbol
 bool getRomanFraction(int fracNum, int fracDen);

@@ -1,9 +1,15 @@
 Noah Kang
 CSC121-001
 Arabic to Roman Numeral Lab
-Level X:
- Base Level 3
- Extra Level 3 - 
+Level 14:
+    Level 3: Base Level
+    Level 3: Broke Down Program Into Manageable Functions
+    Level 1.5: Replaced repetitive conversion of each digit with a
+               function
+    Level 1: Added fail checking to the numeric entry code
+    Level 1: Added a separate function for the fail check
+    Level 2: Added switch statements for the number conversion
+    Level 2.5: Added code to translate functions
 
 This program allows users to input a number (Arabic form) and will return
 the number in Roman numeral format.
