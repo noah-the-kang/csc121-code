@@ -7,6 +7,7 @@
 
 using namespace std;
 
+// Function to convert a single digit to its Roman numeral representation
 string convertDigit(int digit, string ones, string fives, string tens) {
     string result = "";
     
@@ -21,7 +22,7 @@ string convertDigit(int digit, string ones, string fives, string tens) {
         case 7: result = fives + ones + ones; break;
         case 8: result = fives + ones + ones + ones; break;
         case 9: result = ones + tens; break;
-        default: return ""; // Invalid digit, should not happen in this context
+        default: return "";
     }
     
     return result;
@@ -31,13 +32,11 @@ string convertDigit(int digit, string ones, string fives, string tens) {
 string arabicToRoman(int number) {
     string romanNumeral = "";
     
-    // Extract each digit and convert based on place value
     int thousands = number / 1000;
     int hundreds = (number % 1000) / 100;
     int tens = (number % 100) / 10;
     int ones = number % 10;
     
-    // Build the Roman numeral string from left to right
     romanNumeral += convertDigit(thousands, "M", "", "");
     romanNumeral += convertDigit(hundreds, "C", "D", "M");
     romanNumeral += convertDigit(tens, "X", "L", "C");
@@ -82,42 +81,73 @@ void displayResult(const string& romanResult) {
     cout << endl;
 }
 
-// Function to get a valid number from the user
-int getValidNumber() {
-    int num;
+// Helper to trim whitespace
+string trim(const string& s) {
+    size_t start = s.find_first_not_of(" \t");
+    size_t end = s.find_last_not_of(" \t");
+    return (start == string::npos) ? "" : s.substr(start, end - start + 1);
+}
+
+// Function to get a valid number and optional fraction (only twelfths or 1/4 allowed)
+bool getValidNumber(int& whole, int& fracNum, int& fracDen) {
     while (true) {
-        cout << "Enter your number:  ";
-        cin >> num;
+        cout << "Enter your whole number:  ";
+        cin >> whole;
 
         if (cin.fail()) {
-            cin.clear(); // clear error state
-            cin.ignore(10000, '\n'); // discard invalid input
+            cin.clear();
+            cin.ignore(10000, '\n');
             cout << "\nInvalid input. Please enter a valid integer.\n" << endl;
             continue;
         }
-
-        if (num >= 4000) {
+        if (whole >= 4000) {
             cout << "Oh, I'm sorry, that value is too large for Roman civilization." << endl;
             cout << "Please try again with a number [strictly] less than 4000, thank you..." << endl << endl;
             continue;
         }
-
-        if (num <= 0) {
+        if (whole <= 0) {
             cout << "Oh, I'm sorry, that value is too small for Roman civilization." << endl;
             cout << "Please try again with a number [strictly] greater than 0, thank you..." << endl << endl;
             continue;
         }
 
-        break; // valid input
+        // Ask if user wants to enter a fraction
+        cout << "Do you want to enter a fraction? (y/n): ";
+        char fracChoice;
+        cin >> fracChoice;
+        cin.ignore(10000, '\n'); // clear the rest of the line
+
+        if (tolower(fracChoice) == 'y') {
+            cout << "Enter the numerator: ";
+            cin >> fracNum;
+            cout << "Enter the denominator: ";
+            cin >> fracDen;
+            cin.ignore(10000, '\n'); // clear the rest of the line
+
+            // Only allow n/12 (1 <= n < 12), 1/2, 1/3, 1/4, 1/6
+            bool valid = false;
+            if (fracDen == 12 && fracNum > 0 && 12 % fracDen == 0){
+                valid = true;
+            }
+
+            if (!valid) {
+                cout << "\nOh, I'm sorry, Roman civilization did not respect the concept of '" << fracNum << "/" << fracDen << "'.\n";
+                cout << "I'll have to insist that you stick strictly to versions of '1/12', '1/2', '1/3', '1/4', or '1/6'...\n\n    ...if you don't mind.\n" << endl;
+                continue;
+            }
+        } else {
+            fracNum = 0;
+            fracDen = 1;
+        }
+        return true;
     }
-    return num;
 }
 
 int main() {
     srand(static_cast<unsigned int>(time(0))); // Seed random
 
     string userResponse;
-    int number;
+    int number, fracNum, fracDen;
     string romanResult;
     
     cout << endl;
@@ -126,7 +156,7 @@ int main() {
     
     cout << "Will you be converting numbers to Roman form with us today?"  
         << " (y/n) ";
-    cin >> userResponse;
+    getline(cin, userResponse);
     cout << endl;
     
     if (tolower(userResponse[0]) != 'y') {
@@ -141,7 +171,9 @@ int main() {
     cout << endl;
     
     do {
-        number = getValidNumber();
+        while (!getValidNumber(number, fracNum, fracDen)) {
+            // keep prompting until valid
+        }
         cout << endl;
 
         romanResult = arabicToRoman(number);
@@ -149,7 +181,7 @@ int main() {
         displayResult(romanResult);
 
         cout << "Would you like to convert another number?  ";
-        cin >> userResponse;
+        getline(cin, userResponse);
         cout << endl;
 
     } while (tolower(userResponse[0]) == 'y');
