@@ -159,8 +159,8 @@ bool getValidNumber(int& whole, int& fracNum, int& fracDen) {
             }
 
             // only allow multiples of 12
-            bool valid = fracDen == 12 && fracNum > 0 || 
-                12 % fracDen == 0;
+            bool valid = (fracDen == 12 && fracNum > 0) || 
+                (12 % fracDen == 0);
             if (!valid) {
                 cout << "\nOh, I'm sorry, Roman civilization did not "
                     << "respect the concept of '" << fracNum << "/" << 
