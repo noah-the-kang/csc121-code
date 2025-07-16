@@ -1,0 +1,11 @@
+Noah Kang
+CSC121-001
+Room Finder Project
+Level 5:
+    Level 4: Base Level
+    Level 1: Placed suffix determining function in a library
+    Level 1.5: Allowed the user to type the words "yes" or "no" instead
+        of limiting to just 'y' or 'n'
+
+This program allows users to input a number (Arabic form) and will return
+the number in Roman numeral format.

@@ -1,0 +1,27 @@
+1. How do you separate the user's building letter from their actual room
+    number? (Hint: How did you read die-rolls or times of day or even 
+    initials with periods?)
+
+    I combined multiple while loops using one i value as the index so I
+    could remove leading whitespace. I used i to check for letters using
+    isalpha and then moved onto the next while loop to check for digits
+    using isdigits.
+
+2. How can you allow the user to enter either upper or lowercase letters
+    for the yes/no question?! (It's amazing!)
+
+    I used tolower to standardize the response to lowercase to check if
+    it's equal to 'y'.
+
+3. How can you decide which floor their room is on from the room number?
+
+    I divided the room number by 100 using integer division. This gives
+    the left-most digit and thus the floor.
+
+4. Given a value like 4 or 11 or 23, how can you tell what suffix to print
+    (st, nd, rd, or th)? Is there a pattern?
+
+    If the last two digits are 11 - 13, then there should be a 'th' as
+    the suffix, hence the inequality (floor % 100 >= 11 && floor % 100
+    <= 13). Otherwise, if the last digit is 1, 2, or 3, the suffix should
+    be 'st', 'nd', 'rd', respectively, and all other endings are 'th'.

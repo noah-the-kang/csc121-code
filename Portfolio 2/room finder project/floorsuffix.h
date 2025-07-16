@@ -2,6 +2,8 @@
 #define FLOORSUFFIX_H
 
 #include <string>
-std::string getFloorSuffix(int floor);
+using namespace std;
+
+string getFloorSuffix(int floor);
 
 #endif
