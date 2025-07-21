@@ -1,0 +1,11 @@
+Noah Kang
+CSC121-001
+Palindrome Lab
+Level 6.5:
+    Level 2.5: Base Level
+    Level 1.5: Allows users to check for both words and phrases
+    Level 1.5: Merged two palindrome checking functions
+        Level 1: Made the function argument default to checking words
+
+This program allows users to input a word or phrase and check whether it
+is a palindrome or not.

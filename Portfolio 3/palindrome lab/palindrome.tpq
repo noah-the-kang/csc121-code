@@ -1,0 +1,52 @@
+1. How can you access individual characters within a string?
+
+    You can use the [] operators to access chars at certain indicies in
+    a string.
+
+2. How can you tell how long a string's content is?
+
+    You can use the .size().
+
+3. How can you tell that the characters at the beginning and end of a word
+are the same?
+
+    You can use two indexes that start from the beginning and end (size()
+    -1) and compare the chars at those two values as they move closer to
+    the middle (add to the starting index and substract from the ending
+    index).
+
+4. What do you do with odd length words?
+
+    You can do the same procedure described in TPQ #3, but you can set
+    a condition where the left index must be greater than the right index
+    for the loop to continue, so when the two variables equal each other,
+    being they meet at the middle char, the loop will exit.
+
+5. How many characters do you have to look at to determine a word's
+'palindromicness' if it contains 10 characters? 11 characters? n
+characters?
+
+    You would divide n by 2 using integer division and then multiply by 2.
+
+6. Does your program consider 34743 a palindrome? Why/Why not?
+
+    My program does since it treats 34743 as a string and each digit as a
+    char.
+
+
+TPQs for optional checking for phrases addition
+1. Comparing the phrase algorithm to your original word palindrome
+checker, is there really much difference? I'd be willing to bet the loop
+head is identical and only the position update(s) need(s) to change...
+(But perhaps I've said too much already...)
+
+    There's no difference other than removing punctuation and spacing.
+
+2. How can you detect that the user's input is a single word or a whole
+phrase? (Hint: What does one have that the other doesn't? And how can you
+look for that within a string?)
+
+    My program asks the user to determine whether they're inputting a word
+    or a phrase, but to automatically check, you can check for whitespace
+    in the inputted string (phrases will have spaces in between the
+    words).
