@@ -1,0 +1,12 @@
+Noah Kang
+CSC121-001
+Sorts (Order is the key...) Lab
+Level 6:
+    Level 4: Base Level
+    Level 0.5: Allows users to specify the bounds of the range of the
+        random values that the vector is being filled with
+    Level 1.5: Added a menu to allow the user to choose which sorting
+        algorithm to test
+
+This program allows users to test selection and insertion sort methods
+on a vector filled with randomly generated values.

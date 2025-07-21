@@ -1,0 +1,37 @@
+1. Explain (briefly) the differing philosophies of selection and insertion
+    sort. How can they both produce a sorted list?
+
+    Selection sort finds the minimum value in subsets of decreasing size
+    while insertion sort mainly "inserts" the minimum value at each
+    increasing index of the list.
+
+2. What type of values are your functions sorting? Does it really matter
+    what type it is in terms of the algorithms? Does it make very much of
+    a difference to your implementation of the algorithms? How easily
+    could you change the type of information you were sorting? (Is there a
+    special type of data that might be more difficult to adjust to?)
+
+    My functions sort integer values, but it the data type doesn't really
+    matter in terms of the algorithms, as long as they are some form of
+    a numerical type.
+
+3. Does it matter what range of values you produce to randomly fill the
+    vector? Will this affect the sorting in any way?
+
+    The range of the values doesn't necessarily affect the sorting in
+    any way.
+
+4. Do your functions sort into ascending or descending order? How would
+    you go about changing this order? As long as it is 'in order', does it
+    truly matter which direction they are going?
+
+    My functions sort in ascending order, but this could be changed by
+    finding the maximum values and swapping them instead of minimum
+    values.
+
+5. How can you do the verification that the data is sorted? (Note that
+    your program is supposed to do this automatically — not ask the user
+    if the data is sorted after printing it!)
+
+    You could sort the data using both methods and compare if the sorted
+    lists of the two methods are equal.
