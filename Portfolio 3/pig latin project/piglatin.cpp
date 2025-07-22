@@ -14,20 +14,22 @@ bool isConsonant(char c) {
 }
 
 string toPigLatin(const string& enteredWord) {
-    if (enteredWord.empty()) {return word;}
+    const string punct = "?:;.!'\",`~@#$%^&*()-_+=|\\}{][/><";
+    if (enteredWord.empty()) {return enteredWord;}
 
     string pigLatinWord;
-
     string word = "";
-    for (char c : enteredWord){
+
+    for (char c : enteredWord) {
         word += tolower(c);
     }
 
     // Cases
-    // Qu
+    // Word starts with "qu"
     if (word.substr(0,2) == "qu"){
         pigLatinWord = word.substr(2) + "quay";
-    } else if (isConsonant(word[0]) && isConsonant(word[1]) && isConsonant(word[2])) {
+    } else if (isConsonant(word[0]) && isConsonant(word[1]) &&
+        isConsonant(word[2])) {
         // Three consonants at the start
         pigLatinWord = word.substr(3) + word.substr(0, 3) + "ay";
     } else if (isConsonant(word[0]) && isConsonant(word[1])) {
@@ -44,19 +46,33 @@ string toPigLatin(const string& enteredWord) {
         pigLatinWord = word.substr(1) + word[0] + "ay";
     }
 
+    // fix punctuation
+    for (int i = 0; i < pigLatinWord.size(); i++) {
+        if (punct.find(pigLatinWord[i]) != string::npos) {
+            pigLatinWord += pigLatinWord[i];
+            pigLatinWord.erase(i, 1);
+        }
+    }
+
     return pigLatinWord;
 }
 
 
 string convertSentenceToPigLatin(const string& sentence) {
     string pigLatinSentence;
-    size_t start = 0, end;
+    size_t start = 0;
+    size_t end = sentence.find(' ', start);
 
-    while ((end = sentence.find(' ', start)) != string::npos) {
-        pigLatinSentence += toPigLatin(sentence.substr(start, end - start)) + " ";
+    while (end != string::npos) {
+        pigLatinSentence += toPigLatin(
+            sentence.substr(start, end - start)) + " ";
         start = end + 1;
+        end = sentence.find(' ', start);
     }
-    pigLatinSentence += toPigLatin(sentence.substr(start)); // Last word
+    pigLatinSentence += toPigLatin(sentence.substr(start)); // last word
+
+    // Capitalize first letter
+    pigLatinSentence[0] = static_cast<char>(toupper(pigLatinSentence[0]));
 
     return pigLatinSentence;
 }
@@ -72,23 +88,10 @@ int main(){
 
         if (choice[0] == 'y')
         {
-            cout << "Would you like to convert to Pig Latin or English? (p/e) ";
-            string choice;
-            cin >> choice;
-            cin.ignore(); // Clear the newline character from the input buffer
-            if (choice[0] == 'p') {
-                cout << "Enter a sentence to convert to Pig Latin: ";
-                string sentence;
-                getline(cin, sentence);
-                cout << "Pig Latin: " << convertSentenceToPigLatin(sentence) << endl;
-            } else if (choice[0] == 'e') {
-                cout << "Enter a Pig Latin sentence to convert to English: ";
-                string sentence;
-                getline(cin, sentence);
-                cout << "English: " << convertPigLatinSentenceToEnglish(sentence) << endl;
-            } else {
-                cout << "Invalid choice." << endl;
-            }
+            cout << "Enter a sentence to convert to Pig Latin: ";
+            string sentence;
+            getline(cin, sentence);
+            cout << "Pig Latin: " << convertSentenceToPigLatin(sentence) << endl;
         } else {
             running = false;
             cout << "Exiting!" << endl;
