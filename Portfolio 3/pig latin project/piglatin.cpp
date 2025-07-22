@@ -13,13 +13,18 @@ bool isConsonant(char c) {
     return (c >= 'a' && c <= 'z' && !isVowel(c));
 }
 
-string toPigLatin(const string& word) {
-    if (word.empty()) {return word;}
+string toPigLatin(const string& enteredWord) {
+    if (enteredWord.empty()) {return word;}
 
     string pigLatinWord;
 
+    string word = "";
+    for (char c : enteredWord){
+        word += tolower(c);
+    }
+
     // Cases
-    // q vs qu
+    // Qu
     if (word.substr(0,2) == "qu"){
         pigLatinWord = word.substr(2) + "quay";
     } else if (isConsonant(word[0]) && isConsonant(word[1]) && isConsonant(word[2])) {
@@ -35,14 +40,13 @@ string toPigLatin(const string& word) {
         // Starts with a vowel
         pigLatinWord = word + "yay";
     } else {
-        // Non-alphabetic character or empty string
-        pigLatinWord = word;
+        // All other cases
+        pigLatinWord = word.substr(1) + word[0] + "ay";
     }
-
-
 
     return pigLatinWord;
 }
+
 
 string convertSentenceToPigLatin(const string& sentence) {
     string pigLatinSentence;
@@ -55,32 +59,6 @@ string convertSentenceToPigLatin(const string& sentence) {
     pigLatinSentence += toPigLatin(sentence.substr(start)); // Last word
 
     return pigLatinSentence;
-}
-
-string pigLatinToEnglish(const string& word) {
-    if (word.length() < 3) {return word;} // Too short to be Pig Latin
-
-    string pigLatinWord = word.substr(0, word.length() - 2); // Remove "ay" or "way"
-    char lastChar = pigLatinWord.back();
-
-    if (lastChar == 'w') {
-        return pigLatinWord.substr(0, pigLatinWord.length() - 3); // Remove "way"
-    } else {
-        return lastChar + pigLatinWord.substr(0, pigLatinWord.length() - 1); // Move last char to front
-    }
-}
-
-string convertPigLatinSentenceToEnglish(const string& sentence) {
-    string englishSentence;
-    size_t start = 0, end;
-
-    while ((end = sentence.find(' ', start)) != string::npos) {
-        englishSentence += pigLatinToEnglish(sentence.substr(start, end - start)) + " ";
-        start = end + 1;
-    }
-    englishSentence += pigLatinToEnglish(sentence.substr(start)); // Last word
-
-    return englishSentence;
 }
 
 
