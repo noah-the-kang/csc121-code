@@ -91,7 +91,8 @@ int main(){
             cout << "Enter a sentence to convert to Pig Latin: ";
             string sentence;
             getline(cin, sentence);
-            cout << "Pig Latin: " << convertSentenceToPigLatin(sentence) << endl;
+            cout << "Pig Latin: " << convertSentenceToPigLatin(sentence)
+                << endl;
         } else {
             running = false;
             cout << "Exiting!" << endl;
