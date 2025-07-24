@@ -4,12 +4,12 @@
 using namespace std;
 
 bool isVowel(char c) {
-    c = tolower(c);
+    c = static_cast<char>(tolower(c));
     return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
 }
 
 bool isConsonant(char c) {
-    c = tolower(c);
+    c = static_cast<char>(tolower(c));
     return (c >= 'a' && c <= 'z' && !isVowel(c));
 }
 
@@ -21,7 +21,7 @@ string toPigLatin(const string& enteredWord) {
     string word = "";
 
     for (char c : enteredWord) {
-        word += tolower(c);
+        word += static_cast<char>(tolower(c));
     }
 
     // Cases
@@ -47,7 +47,7 @@ string toPigLatin(const string& enteredWord) {
     }
 
     // fix punctuation
-    for (int i = 0; i < pigLatinWord.size(); i++) {
+    for (size_t i = 0; i < pigLatinWord.size(); i++) {
         if (punct.find(pigLatinWord[i]) != string::npos) {
             pigLatinWord += pigLatinWord[i];
             pigLatinWord.erase(i, 1);
@@ -63,12 +63,12 @@ string convertSentenceToPigLatin(const string& sentence) {
     size_t start = 0;
     size_t end = sentence.find(' ', start);
 
-    while (end != string::npos) {
+    do {
         pigLatinSentence += toPigLatin(
             sentence.substr(start, end - start)) + " ";
         start = end + 1;
         end = sentence.find(' ', start);
-    }
+    } while (end != string::npos);
     pigLatinSentence += toPigLatin(sentence.substr(start)); // last word
 
     // Capitalize first letter
@@ -80,7 +80,7 @@ string convertSentenceToPigLatin(const string& sentence) {
 
 int main(){
     bool running = true;
-    while (running){
+    do {
         cout << "Would you like to use this program? (y/n) ";
         string choice;
         cin >> choice;
@@ -97,9 +97,7 @@ int main(){
             running = false;
             cout << "Exiting!" << endl;
         }
-        
-        
-    }
+    } while (running);
 
 
     return 0;
