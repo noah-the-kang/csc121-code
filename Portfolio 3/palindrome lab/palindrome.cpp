@@ -16,9 +16,9 @@ void removePunctuation(std::string& phrase) {
 }
 
 
-bool isPalindrome(string& phrase, bool isPhrase = false) {
-    int left = 0;
-    int right = phrase.size() - 1;
+bool isPalindrome(string& phrase, const bool isPhrase = false) {
+    size_t left = 0;
+    size_t right = phrase.size() - 1;
 
     if (isPhrase){
         removePunctuation(phrase);
@@ -37,7 +37,7 @@ bool isPalindrome(string& phrase, bool isPhrase = false) {
 
 int main(){
     bool running = true;
-    while (running){
+    do {
         cout << "Would you like to check a word/phrase? (y/n): ";
         string running_response;
         cin >> running_response;
@@ -70,8 +70,7 @@ int main(){
             cout << "Exiting!" << endl;
             running = false;
         }
-    }
-
+    } while (running);
 
     return 0;
 }
