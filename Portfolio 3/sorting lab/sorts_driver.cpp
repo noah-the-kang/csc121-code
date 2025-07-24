@@ -1,11 +1,10 @@
 #include "sorts.h"
-#include "sorts.cpp"
 #include <iostream>
 #include <string>
 #include <vector>
 using namespace std;
 
-vector<int> generateRandomVector(int size, int lowerBound,
+vector<int> generateRandomVector(size_t size, int lowerBound,
     int upperBound) {
     vector<int> v(size);
     for (int i = 0; i < size; ++i) {
@@ -17,7 +16,7 @@ vector<int> generateRandomVector(int size, int lowerBound,
 int main(){
     cout << "Welcome to the Sorting Lab!" << endl;
     bool running = true;
-    while (running){
+    do {
         cout << "Would you like to sort a vector? (y/n): ";
         string input;
         getline(cin, input);
@@ -37,13 +36,13 @@ int main(){
             cin.ignore();
 
             cout << "Choose a sorting algorithm (1 for Selection Sort,"
-                << " 2 for Insertion Sort): ";
+                 << " 2 for Insertion Sort): ";
             int choice;
             cin >> choice;
             cin.ignore();
 
             cout << "Would you like to sort within a specific range?"
-                << " (y/n): ";
+                 << " (y/n): ";
             string rangeInput;
             bool isRanged = true;
             getline(cin, rangeInput);
@@ -62,7 +61,7 @@ int main(){
 
         
             vector<int> v = generateRandomVector(vectorSize, lowerBound,
-                upperBound);
+                            upperBound);
             cout << "Generated vector: ";
             for (const auto& num : v) {
                 cout << num << " ";
@@ -95,7 +94,6 @@ int main(){
                 cout << endl;
             } else {
                 cout << "Invalid choice. Exiting." << endl;
-                break;
             }
 
             
@@ -103,7 +101,7 @@ int main(){
             cout << "Have a great day!" << endl;
             running = false;
         }
-    }
+    } while (running);
 
 
     return 0;
