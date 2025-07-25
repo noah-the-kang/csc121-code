@@ -8,7 +8,7 @@ using namespace std;
 vector<int> generateRandomVector(size_t size, int lowerBound,
                                  int upperBound) {
     vector<int> v(size);
-    for (int i = 0; i < size; ++i) {
+    for (size_t i = 0; i < size; ++i) {
         v[i] = rand() % (upperBound - lowerBound + 1) + lowerBound;
     }
     return v;
