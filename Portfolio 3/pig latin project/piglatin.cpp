@@ -84,7 +84,7 @@ int main(){
         cout << "Would you like to use this program? (y/n) ";
         string choice;
         cin >> choice;
-        cin.ignore(); // Clear the newline character from the input buffer
+        cin.ignore();
 
         if (choice[0] == 'y')
         {
