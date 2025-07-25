@@ -15,10 +15,6 @@ void selectionSort(vector<int>& v, size_t begin, size_t end) {
     }
 }
 
-// Selection Sort (whole vector)
-inline void selectionSort(vector<int>& v) {
-    selectionSort(v, 0, v.size());
-}
 
 // Insertion Sort (range)
 void insertionSort(vector<int>& v, size_t begin, size_t end) {
@@ -31,9 +27,4 @@ void insertionSort(vector<int>& v, size_t begin, size_t end) {
         }
         v[j] = key;
     }
-}
-
-// Insertion Sort (whole vector)
-inline void insertionSort(vector<int>& v) {
-    insertionSort(v, 0, v.size());
 }

@@ -1,11 +1,12 @@
-#include "sorts.h"
 #include <iostream>
 #include <string>
 #include <vector>
+#include "sorts.h"
+
 using namespace std;
 
 vector<int> generateRandomVector(size_t size, int lowerBound,
-    int upperBound) {
+                                 int upperBound) {
     vector<int> v(size);
     for (int i = 0; i < size; ++i) {
         v[i] = rand() % (upperBound - lowerBound + 1) + lowerBound;
